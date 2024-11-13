@@ -1,0 +1,316 @@
+/* ================================================== コンテンツ部分 ================================================== */
+:root {
+  --avatar-frame-color-dark: rgb(255, 255, 255);
+  --avatar-frame-color-light: white;
+}
+body {
+  background-color: rgb(223, 221, 198);
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: 9999;
+  user-select: none;
+}
+
+/* アバター部分 */
+.agent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 100%;
+  width: 40%;
+  overflow-x: hidden;
+  border: none;
+  display: block;
+  pointer-events: none;
+}
+/* アバターフレーム */
+.avatar-frame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 86%;
+  width: 39%;
+  border-right: 3vw solid var(--avatar-frame-color-dark);
+  border-left: 3vw solid var(--avatar-frame-color-dark);
+  border-top: 7vh solid var(--avatar-frame-color-light);
+  border-bottom: 7vh solid var(--avatar-frame-color-light);
+  opacity: 1;
+  /* background-color: red; */
+}
+/* アバター背景 */
+.avatar-bg {
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+}
+/* アバターオーバーレイ */
+#avatarOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 100%;
+  width: 46%;
+  background-color: rgba(0, 0, 0, 0);
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  display: block;
+  z-index: 2;
+}
+
+/* スタンプエリア */
+#stampBox {
+  position: fixed;
+  top: 5vh;
+  right: 1vh;
+  height: 90vh;
+  width: 24vh;
+  margin: 0;
+  background-color: rgba(118, 113, 113, 0.8);
+  border: 0.5vh solid whitesmoke;
+  border-radius: 3%;
+  transition: all 0.3s;
+  z-index: 2;
+}
+#stampBox img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 18vh;
+  width: 18vh;
+  border: 0.7vh solid white;
+  border-radius: 25%;
+  z-index: 2;
+}
+.stamp-good-morning {
+  top: 3vh;
+}
+.stamp-ok {
+  top: 24vh;
+}
+.stamp-thanks {
+  top: 45vh;
+}
+.stamp-good-night {
+  top: 66vh;
+}
+
+/* 新着メッセージ件数 */
+#newMsgCnt {
+  position: fixed;
+  top: 35vh;
+  left: 7vh;
+  width: 30vh;
+  height: 30vh;
+  font-size: 7vw;
+  font-weight: bold;
+  color: white;
+  border-radius: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.3s;
+}
+.new-msg-yes {
+  background-color: rgb(224, 30, 90);
+  border: 0.5vw solid rgb(223, 107, 144);
+
+  animation: blink 0.3s 2;
+}
+.new-msg-no {
+  background-color: rgb(118, 113, 113);
+  border: 0.5vw solid rgb(168, 168, 168);
+}
+
+/* ================================================== amico ID 要求画面 ================================================== */
+#amicoIdRegistration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  color: white;
+  z-index: 100;
+  text-align: center;
+}
+#amicoIdFormDescription {
+  position: fixed;
+  top: 2vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font-size: 5vh;
+  color: gray;
+}
+#amicoIdInput {
+  position: fixed;
+  top: 20vh;
+  left: 0;
+  right: 0;
+  font-size: 8vh;
+  font-weight: bold;
+}
+#amicoIdInputTag {
+  height: 10vh;
+  width: 50vw;
+  font-size: 8vh;
+}
+#amicoIdBtn {
+  position: fixed;
+  top: 35vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 20vw;
+  height: 15vh;
+  font-size: 6vh;
+  color: rgb(68, 68, 68);
+  font-weight: bold;
+  background-color: #98e165;
+}
+
+/* ================================================== ローディング画面 ================================================== */
+/* ローディング画面 */
+#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transition: all 1s;
+  background-color: rgb(223, 221, 198);
+  z-index: 9999;
+}
+.spinner {
+  position: absolute;
+  width: 15vw;
+  height: 15vw;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: white;
+  border-radius: 100%;
+  animation: sk-scaleout 1s infinite ease-in-out;
+}
+/* ローディングアニメーション */
+@keyframes sk-scaleout {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+/* 「起動中」 */
+.status {
+  position: absolute;
+  top: 45%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 2vw;
+}
+
+/* ================================================== テキストモード ================================================== */
+/* 「メッセージ聞き取り中」吹き出し */
+.stt-balloon {
+  position: fixed;
+  top: 40vh;
+  left: 70vw;
+  width: 25vw;
+  height: 20vw;
+  color: #fff;
+  font-size: 3vw;
+  font-weight: bold;
+  background: rgb(65, 98, 158);
+  border-radius: 50%;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.3s;
+}
+.stt-balloon:before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: -8vw;
+  border: 3.5vw solid transparent;
+  border-right: 7vw solid rgb(65, 98, 158);
+  transition: all 0.3s;
+}
+
+/* ================================================== 共通 ================================================== */
+/* 要素を隠す */
+.hide-elem {
+  opacity: 0;
+  visibility: hidden;
+}
+.visible-elem {
+  opacity: 1;
+  visibility: visible;
+}
+/* タップ操作無効化 */
+.not-react {
+  pointer-events: none;
+}
+/* ================================================== デバッグ用 ================================================== */
+/* 新着メッセージ一時保存コンテナ */
+#newMsgContainer {
+  position: fixed;
+  top: 0%;
+  left: 70%;
+  width: 30%;
+}
+
+#debugMsg {
+  font-size: 5vh;
+  position: fixed;
+  top: 94vh;
+  left: 10vw;
+  width: 90vw;
+  color: white;
+  background-color: black;
+  z-index: 9999;
+}
+/* ================================================== メディア拡大表示 ================================================== */
+/* 拡大表示要素 */
+#enlargedMedia {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 10;
+}
+/* メディア中央表示 */
+.large-media {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 11;
+}

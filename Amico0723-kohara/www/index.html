@@ -1,0 +1,103 @@
+<!-- agentとavatarという言葉が混在していますが、同義のものとして扱ってください。 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'"
+    />
+    <!-- components/loader.js, cssは必要 -->
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css" />
+
+    <script src="lib/onsenui/js/onsenui.min.js"></script>
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css" />
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css" />
+
+    <!-- =====ここから追加===== -->
+    <script type="text/javascript" src="chat/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="chat/css/main.css" type="text/css" />
+    <title>amico</title>
+  </head>
+  <body>
+    <!-- ================================================== ローディング画面 ================================================== -->
+    <!-- amico ID 登録画面 -->
+    <div id="amicoIdRegistration">
+      <div id="amicoIdFormDescription">
+        この端末でamicoアプリを利用するためには、<br />オペレータ画面に表示されるamico
+        IDを入力してください。
+      </div>
+      <label id="amicoIdInput">
+        amico ID
+        <input type="text" name="" id="amicoIdInputTag" />
+      </label>
+      <button id="amicoIdBtn" onclick="registerAmicoId()">登録</button>
+    </div>
+    <!-- 起動画面 -->
+    <div id="loading">
+      <div class="spinner"></div>
+      <p class="status">起動中</p>
+    </div>
+    <!-- ================================================== 基本要素 ================================================== -->
+    <!-- アバター部分 -->
+    <iframe
+      id="agent"
+      class="agent"
+      src="chat/agent.html"
+      scrolling="no"
+    ></iframe>
+    <div id="sttBalloon" class="stt-balloon">メッセージ<br />聞き取り中</div>
+    <div id="avatarFrame" class="avatar-frame"></div>
+    <img
+      src="chat/img/avatar-bg.jpg"
+      alt="背景画像取得失敗"
+      class="avatar-bg"
+    />
+    <!-- トリガーオーバーレイ -->
+    <div id="avatarOverlay" onclick="avatarClicked()"></div>
+
+    <!-- スタンプエリア -->
+    <div id="stampBox">
+      <img
+        src="./chat/img/stamp/good-morning.png"
+        alt="good-morning"
+        class="stamp-good-morning"
+        onclick="sendStamp('good-morning')"
+      />
+      <img
+        src="./chat/img/stamp/ok.png"
+        alt="ok"
+        class="stamp-ok"
+        onclick="sendStamp('ok')"
+      />
+      <img
+        src="./chat/img/stamp/thanks.png"
+        alt="thanks"
+        class="stamp-thanks"
+        onclick="sendStamp('thanks')"
+      />
+      <img
+        src="./chat/img/stamp/good-night.png"
+        alt="good-night"
+        class="stamp-good-night"
+        onclick="sendStamp('good-night')"
+      />
+    </div>
+
+    <!-- メディア拡大画面 -->
+    <div id="enlargedMedia" onclick="hideEnlargedMedia(this)"></div>
+    <!-- 新着メッセージ件数 -->
+    <div id="newMsgCnt" class="new-msg-no">0</div>
+    <!-- 新着メッセージ一時保管要素 -->
+    <div id="newMsgContainer" hidden></div>
+    <!-- ================================================== デバッグ表示用 ================================================== -->
+    <!-- デバッグメッセージ -->
+    <div id="debugMsg" hidden>debugMsg</div>
+  </body>
+  <script type="text/javascript" src="chat/js/move-avatar.js"></script>
+</html>
